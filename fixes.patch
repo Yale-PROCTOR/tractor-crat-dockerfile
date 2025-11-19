@@ -1,0 +1,4571 @@
+From 516378455ea10a89d3a9dbd8bcd7a40bae09d516 Mon Sep 17 00:00:00 2001
+From: Jaemin Hong <hjm0901@gmail.com>
+Date: Wed, 19 Nov 2025 02:34:57 +0000
+Subject: [PATCH] fixes
+
+---
+ .../hdr_bitrate_lib/test_vectors/101.json     |   1 +
+ .../hdr_bitrate_lib/test_vectors/110.json     |   1 +
+ .../hdr_bitrate_lib/test_vectors/111.json     |   1 +
+ .../hdr_bitrate_lib/test_vectors/112.json     |   1 +
+ .../hdr_bitrate_lib/test_vectors/113.json     |   1 +
+ .../hdr_bitrate_lib/test_vectors/115.json     |   1 +
+ .../hdr_bitrate_lib/test_vectors/117.json     |   1 +
+ .../hdr_bitrate_lib/test_vectors/119.json     |   1 +
+ .../hdr_bitrate_lib/test_vectors/16.json      |   1 +
+ .../hdr_bitrate_lib/test_vectors/32.json      |   1 +
+ .../hdr_bitrate_lib/test_vectors/48.json      |   1 +
+ .../hdr_bitrate_lib/test_vectors/64.json      |   1 +
+ .../hdr_bitrate_lib/test_vectors/80.json      |   1 +
+ .../hdr_bitrate_lib/test_vectors/96.json      |   1 +
+ .../pow43_lib/test_vectors/14.json            |   1 +
+ .../pow43_lib/test_vectors/15.json            |   1 +
+ .../pow43_lib/test_vectors/29.json            |   1 +
+ .../pow43_lib/test_vectors/30.json            |   1 +
+ .../pow43_lib/test_vectors/81.json            |   1 +
+ .../pow43_lib/test_vectors/82.json            |   1 +
+ .../pow43_lib/test_vectors/83.json            |   1 +
+ .../pow43_lib/test_vectors/84.json            |   1 +
+ .../tritanopia_lib/test_vectors/3.json        |   1 +
+ .../test_vectors/test12.json                  |   2 +-
+ .../test_vectors/test13.json                  |   2 +-
+ .../test_vectors/test14.json                  |   2 +-
+ .../test_vectors/test15.json                  |   2 +-
+ .../test_vectors/test17.json                  |   2 +-
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../CMakeLists.txt                            |  42 ++++++++++++++++++
+ .../scripts/github-actions/run-tests.pyz      | Bin 39575 -> 39472 bytes
+ .../runtests/runners/lib_runner.py            |   4 +-
+ tools/cando2/src/lib.rs                       |   8 ++++
+ 111 files changed, 3398 insertions(+), 7 deletions(-)
+
+diff --git a/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/101.json b/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/101.json
+index 81f52f6..bea4839 100644
+--- a/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/101.json
++++ b/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/101.json
+@@ -1,4 +1,5 @@
+ {
++  "has_ub": "out of bound",
+   "lib_state_in": {
+     "h": [0, 255, 255],
+     "returns": 0
+diff --git a/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/110.json b/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/110.json
+index 7b50c0f..87438e2 100644
+--- a/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/110.json
++++ b/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/110.json
+@@ -1,4 +1,5 @@
+ {
++  "has_ub": "out of bound",
+   "lib_state_in": {
+     "h": [0, 0, 240],
+     "returns": 0
+diff --git a/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/111.json b/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/111.json
+index 253b8bb..db12131 100644
+--- a/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/111.json
++++ b/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/111.json
+@@ -1,4 +1,5 @@
+ {
++  "has_ub": "out of bound",
+   "lib_state_in": {
+     "h": [0, 8, 0],
+     "returns": 0
+diff --git a/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/112.json b/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/112.json
+index 54635f5..713f4b3 100644
+--- a/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/112.json
++++ b/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/112.json
+@@ -1,4 +1,5 @@
+ {
++  "has_ub": "out of bound",
+   "lib_state_in": {
+     "h": [0, 8, 16],
+     "returns": 0
+diff --git a/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/113.json b/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/113.json
+index 8bd51df..7e03171 100644
+--- a/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/113.json
++++ b/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/113.json
+@@ -1,4 +1,5 @@
+ {
++  "has_ub": "out of bound",
+   "lib_state_in": {
+     "h": [0, 8, 240],
+     "returns": 0
+diff --git a/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/115.json b/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/115.json
+index 6d40bc3..b0443aa 100644
+--- a/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/115.json
++++ b/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/115.json
+@@ -1,4 +1,5 @@
+ {
++  "has_ub": "out of bound",
+   "lib_state_in": {
+     "h": [0, 9, 160],
+     "returns": 0
+diff --git a/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/117.json b/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/117.json
+index f8eeb17..1205187 100644
+--- a/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/117.json
++++ b/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/117.json
+@@ -1,4 +1,5 @@
+ {
++  "has_ub": "out of bound",
+   "lib_state_in": {
+     "h": [0, 136, 48],
+     "returns": 0
+diff --git a/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/119.json b/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/119.json
+index f8f89e0..de38ee4 100644
+--- a/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/119.json
++++ b/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/119.json
+@@ -1,4 +1,5 @@
+ {
++  "has_ub": "out of bound",
+   "lib_state_in": {
+     "h": [0, 118, 247],
+     "returns": 0
+diff --git a/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/16.json b/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/16.json
+index e8eaca0..e0c8456 100644
+--- a/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/16.json
++++ b/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/16.json
+@@ -1,4 +1,5 @@
+ {
++  "has_ub": "out of bound",
+   "lib_state_in": {
+     "h": [0, 2, 240],
+     "returns": 0
+diff --git a/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/32.json b/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/32.json
+index 73d5417..e8cc824 100644
+--- a/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/32.json
++++ b/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/32.json
+@@ -1,4 +1,5 @@
+ {
++  "has_ub": "out of bound",
+   "lib_state_in": {
+     "h": [0, 4, 240],
+     "returns": 0
+diff --git a/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/48.json b/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/48.json
+index 44d68fd..86ef180 100644
+--- a/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/48.json
++++ b/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/48.json
+@@ -1,4 +1,5 @@
+ {
++  "has_ub": "out of bound",
+   "lib_state_in": {
+     "h": [0, 6, 240],
+     "returns": 0
+diff --git a/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/64.json b/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/64.json
+index 9a365ab..707a37d 100644
+--- a/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/64.json
++++ b/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/64.json
+@@ -1,4 +1,5 @@
+ {
++  "has_ub": "out of bound",
+   "lib_state_in": {
+     "h": [0, 10, 240],
+     "returns": 0
+diff --git a/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/80.json b/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/80.json
+index 2f369fd..b902cb4 100644
+--- a/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/80.json
++++ b/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/80.json
+@@ -1,4 +1,5 @@
+ {
++  "has_ub": "out of bound",
+   "lib_state_in": {
+     "h": [0, 12, 240],
+     "returns": 0
+diff --git a/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/96.json b/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/96.json
+index 42c5036..a0f2b7a 100644
+--- a/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/96.json
++++ b/Public-Tests/B01_organic/hdr_bitrate_lib/test_vectors/96.json
+@@ -1,4 +1,5 @@
+ {
++  "has_ub": "out of bound",
+   "lib_state_in": {
+     "h": [0, 14, 240],
+     "returns": 0
+diff --git a/Public-Tests/B01_organic/pow43_lib/test_vectors/14.json b/Public-Tests/B01_organic/pow43_lib/test_vectors/14.json
+index b148db4..abef20a 100644
+--- a/Public-Tests/B01_organic/pow43_lib/test_vectors/14.json
++++ b/Public-Tests/B01_organic/pow43_lib/test_vectors/14.json
+@@ -1,4 +1,5 @@
+ {
++  "has_ub": "out of bound",
+   "lib_state_in": {
+     "x": -64,
+     "returns": 0.0
+diff --git a/Public-Tests/B01_organic/pow43_lib/test_vectors/15.json b/Public-Tests/B01_organic/pow43_lib/test_vectors/15.json
+index 6075356..a2bc72e 100644
+--- a/Public-Tests/B01_organic/pow43_lib/test_vectors/15.json
++++ b/Public-Tests/B01_organic/pow43_lib/test_vectors/15.json
+@@ -1,4 +1,5 @@
+ {
++  "has_ub": "out of bound",
+   "lib_state_in": {
+     "x": -100,
+     "returns": 0.0
+diff --git a/Public-Tests/B01_organic/pow43_lib/test_vectors/29.json b/Public-Tests/B01_organic/pow43_lib/test_vectors/29.json
+index ad742eb..2e9dcdd 100644
+--- a/Public-Tests/B01_organic/pow43_lib/test_vectors/29.json
++++ b/Public-Tests/B01_organic/pow43_lib/test_vectors/29.json
+@@ -1,4 +1,5 @@
+ {
++  "has_ub": "out of bound",
+   "lib_state_in": {
+     "x": 16384,
+     "returns": 0.0
+diff --git a/Public-Tests/B01_organic/pow43_lib/test_vectors/30.json b/Public-Tests/B01_organic/pow43_lib/test_vectors/30.json
+index d1b40b3..b57755d 100644
+--- a/Public-Tests/B01_organic/pow43_lib/test_vectors/30.json
++++ b/Public-Tests/B01_organic/pow43_lib/test_vectors/30.json
+@@ -1,4 +1,5 @@
+ {
++  "has_ub": "out of bound",
+   "lib_state_in": {
+     "x": 32768,
+     "returns": 0.0
+diff --git a/Public-Tests/B01_organic/pow43_lib/test_vectors/81.json b/Public-Tests/B01_organic/pow43_lib/test_vectors/81.json
+index 6a1957b..c464827 100644
+--- a/Public-Tests/B01_organic/pow43_lib/test_vectors/81.json
++++ b/Public-Tests/B01_organic/pow43_lib/test_vectors/81.json
+@@ -1,4 +1,5 @@
+ {
++  "has_ub": "out of bound",
+   "lib_state_in": {
+     "x": -129,
+     "returns": 0.0
+diff --git a/Public-Tests/B01_organic/pow43_lib/test_vectors/82.json b/Public-Tests/B01_organic/pow43_lib/test_vectors/82.json
+index 6be3747..3b83eaf 100644
+--- a/Public-Tests/B01_organic/pow43_lib/test_vectors/82.json
++++ b/Public-Tests/B01_organic/pow43_lib/test_vectors/82.json
+@@ -1,4 +1,5 @@
+ {
++  "has_ub": "out of bound",
+   "lib_state_in": {
+     "x": -200,
+     "returns": 0.0
+diff --git a/Public-Tests/B01_organic/pow43_lib/test_vectors/83.json b/Public-Tests/B01_organic/pow43_lib/test_vectors/83.json
+index 1ebf67e..fb2c396 100644
+--- a/Public-Tests/B01_organic/pow43_lib/test_vectors/83.json
++++ b/Public-Tests/B01_organic/pow43_lib/test_vectors/83.json
+@@ -1,4 +1,5 @@
+ {
++  "has_ub": "out of bound",
+   "lib_state_in": {
+     "x": -1000,
+     "returns": 0.0
+diff --git a/Public-Tests/B01_organic/pow43_lib/test_vectors/84.json b/Public-Tests/B01_organic/pow43_lib/test_vectors/84.json
+index 6b72d86..140f22f 100644
+--- a/Public-Tests/B01_organic/pow43_lib/test_vectors/84.json
++++ b/Public-Tests/B01_organic/pow43_lib/test_vectors/84.json
+@@ -1,4 +1,5 @@
+ {
++  "has_ub": "out of bound",
+   "lib_state_in": {
+     "x": 100000,
+     "returns": 0.0
+diff --git a/Public-Tests/B01_organic/tritanopia_lib/test_vectors/3.json b/Public-Tests/B01_organic/tritanopia_lib/test_vectors/3.json
+index 4887130..731639b 100644
+--- a/Public-Tests/B01_organic/tritanopia_lib/test_vectors/3.json
++++ b/Public-Tests/B01_organic/tritanopia_lib/test_vectors/3.json
+@@ -1,4 +1,5 @@
+ {
++  "has_ub": "converting negative float to unsigned int",
+ 	"lib_state_in": {
+ 		"rgb": {
+ 			"r": 92,
+diff --git a/Public-Tests/B01_synthetic/027_ctype_ascii_lib/test_vectors/test12.json b/Public-Tests/B01_synthetic/027_ctype_ascii_lib/test_vectors/test12.json
+index 23ff3c0..00885dc 100644
+--- a/Public-Tests/B01_synthetic/027_ctype_ascii_lib/test_vectors/test12.json
++++ b/Public-Tests/B01_synthetic/027_ctype_ascii_lib/test_vectors/test12.json
+@@ -1,6 +1,6 @@
+ {
+   "stdout": {
+-    "pattern": "alphanumeric: 0\nalphabetic: 0\nlowercase: 0\nuppercase: 0\ndigit: 0\nhexadecimal: 0\ncontrol: 2\ngraphical: 0\nspace: 0\nblank: 0\nprinting: 0\npunctuation: 0\nto lower: \\\u0001\nto upper: \\\u0001\n",
++    "pattern": "alphanumeric: 0\nalphabetic: 0\nlowercase: 0\nuppercase: 0\ndigit: 0\nhexadecimal: 0\ncontrol: ([1-9][0-9]*)\ngraphical: 0\nspace: 0\nblank: 0\nprinting: 0\npunctuation: 0\nto lower: \\\u0001\nto upper: \\\u0001\n",
+     "is_regex": true
+   },
+   "lib_state_in": {
+diff --git a/Public-Tests/B01_synthetic/027_ctype_ascii_lib/test_vectors/test13.json b/Public-Tests/B01_synthetic/027_ctype_ascii_lib/test_vectors/test13.json
+index 341ec13..5eb6a12 100644
+--- a/Public-Tests/B01_synthetic/027_ctype_ascii_lib/test_vectors/test13.json
++++ b/Public-Tests/B01_synthetic/027_ctype_ascii_lib/test_vectors/test13.json
+@@ -1,6 +1,6 @@
+ {
+   "stdout": {
+-    "pattern": "alphanumeric: 0\nalphabetic: 0\nlowercase: 0\nuppercase: 0\ndigit: 0\nhexadecimal: 0\ncontrol: 2\ngraphical: 0\nspace: 0\nblank: 0\nprinting: 0\npunctuation: 0\nto lower: \b\nto upper: \b\n",
++    "pattern": "alphanumeric: 0\nalphabetic: 0\nlowercase: 0\nuppercase: 0\ndigit: 0\nhexadecimal: 0\ncontrol: ([1-9][0-9]*)\ngraphical: 0\nspace: 0\nblank: 0\nprinting: 0\npunctuation: 0\nto lower: \b\nto upper: \b\n",
+     "is_regex": true
+   },
+   "lib_state_in": {
+diff --git a/Public-Tests/B01_synthetic/027_ctype_ascii_lib/test_vectors/test14.json b/Public-Tests/B01_synthetic/027_ctype_ascii_lib/test_vectors/test14.json
+index e31efed..ceac2a5 100644
+--- a/Public-Tests/B01_synthetic/027_ctype_ascii_lib/test_vectors/test14.json
++++ b/Public-Tests/B01_synthetic/027_ctype_ascii_lib/test_vectors/test14.json
+@@ -1,6 +1,6 @@
+ {
+   "stdout": {
+-    "pattern": "alphanumeric: 0\nalphabetic: 0\nlowercase: 0\nuppercase: 0\ndigit: 0\nhexadecimal: 0\ncontrol: 2\ngraphical: 0\nspace: 8192\nblank: ([1-9][0-9]*)\nprinting: 0\npunctuation: 0\nto lower: \t\nto upper: \t\n",
++    "pattern": "alphanumeric: 0\nalphabetic: 0\nlowercase: 0\nuppercase: 0\ndigit: 0\nhexadecimal: 0\ncontrol: ([1-9][0-9]*)\ngraphical: 0\nspace: ([1-9][0-9]*)\nblank: ([1-9][0-9]*)\nprinting: 0\npunctuation: 0\nto lower: \t\nto upper: \t\n",
+     "is_regex": true
+   },
+   "lib_state_in": {
+diff --git a/Public-Tests/B01_synthetic/027_ctype_ascii_lib/test_vectors/test15.json b/Public-Tests/B01_synthetic/027_ctype_ascii_lib/test_vectors/test15.json
+index c051875..4930474 100644
+--- a/Public-Tests/B01_synthetic/027_ctype_ascii_lib/test_vectors/test15.json
++++ b/Public-Tests/B01_synthetic/027_ctype_ascii_lib/test_vectors/test15.json
+@@ -1,6 +1,6 @@
+ {
+   "stdout": {
+-    "pattern": "alphanumeric: 0\nalphabetic: 0\nlowercase: 0\nuppercase: 0\ndigit: 0\nhexadecimal: 0\ncontrol: 2\ngraphical: 0\nspace: 8192\nblank: 0\nprinting: 0\npunctuation: 0\nto lower: \f\nto upper: \f\n",
++    "pattern": "alphanumeric: 0\nalphabetic: 0\nlowercase: 0\nuppercase: 0\ndigit: 0\nhexadecimal: 0\ncontrol: ([1-9][0-9]*)\ngraphical: 0\nspace: ([1-9][0-9]*)\nblank: 0\nprinting: 0\npunctuation: 0\nto lower: \f\nto upper: \f\n",
+     "is_regex": true
+   },
+   "lib_state_in": {
+diff --git a/Public-Tests/B01_synthetic/027_ctype_ascii_lib/test_vectors/test17.json b/Public-Tests/B01_synthetic/027_ctype_ascii_lib/test_vectors/test17.json
+index 11231de..1e662c7 100644
+--- a/Public-Tests/B01_synthetic/027_ctype_ascii_lib/test_vectors/test17.json
++++ b/Public-Tests/B01_synthetic/027_ctype_ascii_lib/test_vectors/test17.json
+@@ -1,6 +1,6 @@
+ {
+   "stdout": {
+-    "pattern": "alphanumeric: 0\nalphabetic: 0\nlowercase: 0\nuppercase: 0\ndigit: 0\nhexadecimal: 0\ncontrol: 2\ngraphical: 0\nspace: 8192\nblank: 0\nprinting: 0\npunctuation: 0\nto lower: \n\nto upper: \n\n",
++    "pattern": "alphanumeric: 0\nalphabetic: 0\nlowercase: 0\nuppercase: 0\ndigit: 0\nhexadecimal: 0\ncontrol: ([1-9][0-9]*)\ngraphical: 0\nspace: ([1-9][0-9]*)\nblank: 0\nprinting: 0\npunctuation: 0\nto lower: \n\nto upper: \n\n",
+     "is_regex": true
+   },
+   "lib_state_in": {
+diff --git a/Public-Tests/P01_sphincs_plus/053_blake_128f_s_initialize_hash_function_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/053_blake_128f_s_initialize_hash_function_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/053_blake_128f_s_initialize_hash_function_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/053_blake_128f_s_initialize_hash_function_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/054_blake_128f_s_prf_addr_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/054_blake_128f_s_prf_addr_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/054_blake_128f_s_prf_addr_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/054_blake_128f_s_prf_addr_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/055_blake_128f_s_gen_message_random_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/055_blake_128f_s_gen_message_random_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/055_blake_128f_s_gen_message_random_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/055_blake_128f_s_gen_message_random_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/056_blake_128f_s_hash_message_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/056_blake_128f_s_hash_message_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/056_blake_128f_s_hash_message_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/056_blake_128f_s_hash_message_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/057_blake_128f_r_initialize_hash_function_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/057_blake_128f_r_initialize_hash_function_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/057_blake_128f_r_initialize_hash_function_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/057_blake_128f_r_initialize_hash_function_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/058_blake_128f_r_prf_addr_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/058_blake_128f_r_prf_addr_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/058_blake_128f_r_prf_addr_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/058_blake_128f_r_prf_addr_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/059_blake_128f_r_gen_message_random_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/059_blake_128f_r_gen_message_random_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/059_blake_128f_r_gen_message_random_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/059_blake_128f_r_gen_message_random_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/060_blake_128f_r_hash_message_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/060_blake_128f_r_hash_message_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/060_blake_128f_r_hash_message_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/060_blake_128f_r_hash_message_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/061_blake_128s_s_initialize_hash_function_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/061_blake_128s_s_initialize_hash_function_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/061_blake_128s_s_initialize_hash_function_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/061_blake_128s_s_initialize_hash_function_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/062_blake_128s_s_prf_addr_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/062_blake_128s_s_prf_addr_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/062_blake_128s_s_prf_addr_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/062_blake_128s_s_prf_addr_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/063_blake_128s_s_gen_message_random_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/063_blake_128s_s_gen_message_random_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/063_blake_128s_s_gen_message_random_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/063_blake_128s_s_gen_message_random_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/064_blake_128s_s_hash_message_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/064_blake_128s_s_hash_message_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/064_blake_128s_s_hash_message_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/064_blake_128s_s_hash_message_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/065_blake_128s_r_initialize_hash_function_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/065_blake_128s_r_initialize_hash_function_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/065_blake_128s_r_initialize_hash_function_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/065_blake_128s_r_initialize_hash_function_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/066_blake_128s_r_prf_addr_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/066_blake_128s_r_prf_addr_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/066_blake_128s_r_prf_addr_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/066_blake_128s_r_prf_addr_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/067_blake_128s_r_gen_message_random_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/067_blake_128s_r_gen_message_random_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/067_blake_128s_r_gen_message_random_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/067_blake_128s_r_gen_message_random_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/068_blake_128s_r_hash_message_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/068_blake_128s_r_hash_message_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/068_blake_128s_r_hash_message_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/068_blake_128s_r_hash_message_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/069_blake_192f_s_initialize_hash_function_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/069_blake_192f_s_initialize_hash_function_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/069_blake_192f_s_initialize_hash_function_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/069_blake_192f_s_initialize_hash_function_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/070_blake_192f_s_prf_addr_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/070_blake_192f_s_prf_addr_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/070_blake_192f_s_prf_addr_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/070_blake_192f_s_prf_addr_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/071_blake_192f_s_gen_message_random_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/071_blake_192f_s_gen_message_random_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/071_blake_192f_s_gen_message_random_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/071_blake_192f_s_gen_message_random_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/072_blake_192f_s_hash_message_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/072_blake_192f_s_hash_message_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/072_blake_192f_s_hash_message_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/072_blake_192f_s_hash_message_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/073_blake_192f_r_initialize_hash_function_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/073_blake_192f_r_initialize_hash_function_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/073_blake_192f_r_initialize_hash_function_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/073_blake_192f_r_initialize_hash_function_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/074_blake_192f_r_prf_addr_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/074_blake_192f_r_prf_addr_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/074_blake_192f_r_prf_addr_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/074_blake_192f_r_prf_addr_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/075_blake_192f_r_gen_message_random_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/075_blake_192f_r_gen_message_random_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/075_blake_192f_r_gen_message_random_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/075_blake_192f_r_gen_message_random_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/076_blake_192f_r_hash_message_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/076_blake_192f_r_hash_message_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/076_blake_192f_r_hash_message_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/076_blake_192f_r_hash_message_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/077_blake_192s_s_initialize_hash_function_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/077_blake_192s_s_initialize_hash_function_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/077_blake_192s_s_initialize_hash_function_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/077_blake_192s_s_initialize_hash_function_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/078_blake_192s_s_prf_addr_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/078_blake_192s_s_prf_addr_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/078_blake_192s_s_prf_addr_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/078_blake_192s_s_prf_addr_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/079_blake_192s_s_gen_message_random_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/079_blake_192s_s_gen_message_random_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/079_blake_192s_s_gen_message_random_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/079_blake_192s_s_gen_message_random_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/080_blake_192s_s_hash_message_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/080_blake_192s_s_hash_message_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/080_blake_192s_s_hash_message_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/080_blake_192s_s_hash_message_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/081_blake_192s_r_initialize_hash_function_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/081_blake_192s_r_initialize_hash_function_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/081_blake_192s_r_initialize_hash_function_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/081_blake_192s_r_initialize_hash_function_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/082_blake_192s_r_prf_addr_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/082_blake_192s_r_prf_addr_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/082_blake_192s_r_prf_addr_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/082_blake_192s_r_prf_addr_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/083_blake_192s_r_gen_message_random_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/083_blake_192s_r_gen_message_random_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/083_blake_192s_r_gen_message_random_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/083_blake_192s_r_gen_message_random_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/084_blake_192s_r_hash_message_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/084_blake_192s_r_hash_message_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/084_blake_192s_r_hash_message_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/084_blake_192s_r_hash_message_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/085_blake_256f_s_initialize_hash_function_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/085_blake_256f_s_initialize_hash_function_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/085_blake_256f_s_initialize_hash_function_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/085_blake_256f_s_initialize_hash_function_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/086_blake_256f_s_prf_addr_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/086_blake_256f_s_prf_addr_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/086_blake_256f_s_prf_addr_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/086_blake_256f_s_prf_addr_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/087_blake_256f_s_gen_message_random_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/087_blake_256f_s_gen_message_random_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/087_blake_256f_s_gen_message_random_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/087_blake_256f_s_gen_message_random_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/088_blake_256f_s_hash_message_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/088_blake_256f_s_hash_message_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/088_blake_256f_s_hash_message_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/088_blake_256f_s_hash_message_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/089_blake_256f_r_initialize_hash_function_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/089_blake_256f_r_initialize_hash_function_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/089_blake_256f_r_initialize_hash_function_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/089_blake_256f_r_initialize_hash_function_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/090_blake_256f_r_prf_addr_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/090_blake_256f_r_prf_addr_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/090_blake_256f_r_prf_addr_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/090_blake_256f_r_prf_addr_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/091_blake_256f_r_gen_message_random_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/091_blake_256f_r_gen_message_random_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/091_blake_256f_r_gen_message_random_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/091_blake_256f_r_gen_message_random_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/092_blake_256f_r_hash_message_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/092_blake_256f_r_hash_message_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/092_blake_256f_r_hash_message_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/092_blake_256f_r_hash_message_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/093_blake_256s_s_initialize_hash_function_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/093_blake_256s_s_initialize_hash_function_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/093_blake_256s_s_initialize_hash_function_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/093_blake_256s_s_initialize_hash_function_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/094_blake_256s_s_prf_addr_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/094_blake_256s_s_prf_addr_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/094_blake_256s_s_prf_addr_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/094_blake_256s_s_prf_addr_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/095_blake_256s_s_gen_message_random_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/095_blake_256s_s_gen_message_random_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/095_blake_256s_s_gen_message_random_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/095_blake_256s_s_gen_message_random_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/096_blake_256s_s_hash_message_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/096_blake_256s_s_hash_message_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/096_blake_256s_s_hash_message_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/096_blake_256s_s_hash_message_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/097_blake_256s_r_initialize_hash_function_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/097_blake_256s_r_initialize_hash_function_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/097_blake_256s_r_initialize_hash_function_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/097_blake_256s_r_initialize_hash_function_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/098_blake_256s_r_prf_addr_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/098_blake_256s_r_prf_addr_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/098_blake_256s_r_prf_addr_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/098_blake_256s_r_prf_addr_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/099_blake_256s_r_gen_message_random_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/099_blake_256s_r_gen_message_random_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/099_blake_256s_r_gen_message_random_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/099_blake_256s_r_gen_message_random_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/100_blake_256s_r_hash_message_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/100_blake_256s_r_hash_message_lib/CMakeLists.txt
+index 4d5706e..b780754 100644
+--- a/Public-Tests/P01_sphincs_plus/100_blake_256s_r_hash_message_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/100_blake_256s_r_hash_message_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "blake")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "blake")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "blake")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/101_sha2_128f_s_initialize_hash_function_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/101_sha2_128f_s_initialize_hash_function_lib/CMakeLists.txt
+index 4d5706e..180fce5 100644
+--- a/Public-Tests/P01_sphincs_plus/101_sha2_128f_s_initialize_hash_function_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/101_sha2_128f_s_initialize_hash_function_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/102_sha2_128f_s_prf_addr_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/102_sha2_128f_s_prf_addr_lib/CMakeLists.txt
+index 4d5706e..180fce5 100644
+--- a/Public-Tests/P01_sphincs_plus/102_sha2_128f_s_prf_addr_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/102_sha2_128f_s_prf_addr_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/103_sha2_128f_s_gen_message_random_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/103_sha2_128f_s_gen_message_random_lib/CMakeLists.txt
+index 4d5706e..180fce5 100644
+--- a/Public-Tests/P01_sphincs_plus/103_sha2_128f_s_gen_message_random_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/103_sha2_128f_s_gen_message_random_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/104_sha2_128f_s_hash_message_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/104_sha2_128f_s_hash_message_lib/CMakeLists.txt
+index 4d5706e..180fce5 100644
+--- a/Public-Tests/P01_sphincs_plus/104_sha2_128f_s_hash_message_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/104_sha2_128f_s_hash_message_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/105_sha2_128f_r_initialize_hash_function_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/105_sha2_128f_r_initialize_hash_function_lib/CMakeLists.txt
+index 4d5706e..180fce5 100644
+--- a/Public-Tests/P01_sphincs_plus/105_sha2_128f_r_initialize_hash_function_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/105_sha2_128f_r_initialize_hash_function_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/106_sha2_128f_r_prf_addr_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/106_sha2_128f_r_prf_addr_lib/CMakeLists.txt
+index 4d5706e..180fce5 100644
+--- a/Public-Tests/P01_sphincs_plus/106_sha2_128f_r_prf_addr_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/106_sha2_128f_r_prf_addr_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/107_sha2_128f_r_gen_message_random_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/107_sha2_128f_r_gen_message_random_lib/CMakeLists.txt
+index 4d5706e..180fce5 100644
+--- a/Public-Tests/P01_sphincs_plus/107_sha2_128f_r_gen_message_random_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/107_sha2_128f_r_gen_message_random_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/108_sha2_128f_r_hash_message_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/108_sha2_128f_r_hash_message_lib/CMakeLists.txt
+index 4d5706e..180fce5 100644
+--- a/Public-Tests/P01_sphincs_plus/108_sha2_128f_r_hash_message_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/108_sha2_128f_r_hash_message_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/109_sha2_128s_s_initialize_hash_function_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/109_sha2_128s_s_initialize_hash_function_lib/CMakeLists.txt
+index 4d5706e..180fce5 100644
+--- a/Public-Tests/P01_sphincs_plus/109_sha2_128s_s_initialize_hash_function_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/109_sha2_128s_s_initialize_hash_function_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/110_sha2_128s_s_prf_addr_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/110_sha2_128s_s_prf_addr_lib/CMakeLists.txt
+index 4d5706e..180fce5 100644
+--- a/Public-Tests/P01_sphincs_plus/110_sha2_128s_s_prf_addr_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/110_sha2_128s_s_prf_addr_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/111_sha2_128s_s_gen_message_random_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/111_sha2_128s_s_gen_message_random_lib/CMakeLists.txt
+index 4d5706e..180fce5 100644
+--- a/Public-Tests/P01_sphincs_plus/111_sha2_128s_s_gen_message_random_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/111_sha2_128s_s_gen_message_random_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/112_sha2_128s_s_hash_message_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/112_sha2_128s_s_hash_message_lib/CMakeLists.txt
+index 4d5706e..180fce5 100644
+--- a/Public-Tests/P01_sphincs_plus/112_sha2_128s_s_hash_message_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/112_sha2_128s_s_hash_message_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/113_sha2_128s_r_initialize_hash_function_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/113_sha2_128s_r_initialize_hash_function_lib/CMakeLists.txt
+index 4d5706e..180fce5 100644
+--- a/Public-Tests/P01_sphincs_plus/113_sha2_128s_r_initialize_hash_function_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/113_sha2_128s_r_initialize_hash_function_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/114_sha2_128s_r_prf_addr_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/114_sha2_128s_r_prf_addr_lib/CMakeLists.txt
+index 4d5706e..180fce5 100644
+--- a/Public-Tests/P01_sphincs_plus/114_sha2_128s_r_prf_addr_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/114_sha2_128s_r_prf_addr_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/115_sha2_128s_r_gen_message_random_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/115_sha2_128s_r_gen_message_random_lib/CMakeLists.txt
+index 4d5706e..180fce5 100644
+--- a/Public-Tests/P01_sphincs_plus/115_sha2_128s_r_gen_message_random_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/115_sha2_128s_r_gen_message_random_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/116_sha2_128s_r_hash_message_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/116_sha2_128s_r_hash_message_lib/CMakeLists.txt
+index 4d5706e..180fce5 100644
+--- a/Public-Tests/P01_sphincs_plus/116_sha2_128s_r_hash_message_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/116_sha2_128s_r_hash_message_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/117_sha2_192f_s_initialize_hash_function_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/117_sha2_192f_s_initialize_hash_function_lib/CMakeLists.txt
+index 4d5706e..180fce5 100644
+--- a/Public-Tests/P01_sphincs_plus/117_sha2_192f_s_initialize_hash_function_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/117_sha2_192f_s_initialize_hash_function_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/118_sha2_192f_s_prf_addr_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/118_sha2_192f_s_prf_addr_lib/CMakeLists.txt
+index 4d5706e..180fce5 100644
+--- a/Public-Tests/P01_sphincs_plus/118_sha2_192f_s_prf_addr_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/118_sha2_192f_s_prf_addr_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/119_sha2_192f_s_gen_message_random_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/119_sha2_192f_s_gen_message_random_lib/CMakeLists.txt
+index 4d5706e..180fce5 100644
+--- a/Public-Tests/P01_sphincs_plus/119_sha2_192f_s_gen_message_random_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/119_sha2_192f_s_gen_message_random_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/120_sha2_192f_s_hash_message_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/120_sha2_192f_s_hash_message_lib/CMakeLists.txt
+index 4d5706e..180fce5 100644
+--- a/Public-Tests/P01_sphincs_plus/120_sha2_192f_s_hash_message_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/120_sha2_192f_s_hash_message_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/121_sha2_192f_r_initialize_hash_function_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/121_sha2_192f_r_initialize_hash_function_lib/CMakeLists.txt
+index 4d5706e..180fce5 100644
+--- a/Public-Tests/P01_sphincs_plus/121_sha2_192f_r_initialize_hash_function_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/121_sha2_192f_r_initialize_hash_function_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/122_sha2_192f_r_prf_addr_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/122_sha2_192f_r_prf_addr_lib/CMakeLists.txt
+index 4d5706e..180fce5 100644
+--- a/Public-Tests/P01_sphincs_plus/122_sha2_192f_r_prf_addr_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/122_sha2_192f_r_prf_addr_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/123_sha2_192f_r_gen_message_random_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/123_sha2_192f_r_gen_message_random_lib/CMakeLists.txt
+index 4d5706e..180fce5 100644
+--- a/Public-Tests/P01_sphincs_plus/123_sha2_192f_r_gen_message_random_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/123_sha2_192f_r_gen_message_random_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/124_sha2_192f_r_hash_message_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/124_sha2_192f_r_hash_message_lib/CMakeLists.txt
+index 4d5706e..180fce5 100644
+--- a/Public-Tests/P01_sphincs_plus/124_sha2_192f_r_hash_message_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/124_sha2_192f_r_hash_message_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/125_sha2_192s_s_initialize_hash_function_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/125_sha2_192s_s_initialize_hash_function_lib/CMakeLists.txt
+index 4d5706e..180fce5 100644
+--- a/Public-Tests/P01_sphincs_plus/125_sha2_192s_s_initialize_hash_function_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/125_sha2_192s_s_initialize_hash_function_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/126_sha2_192s_s_prf_addr_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/126_sha2_192s_s_prf_addr_lib/CMakeLists.txt
+index 4d5706e..180fce5 100644
+--- a/Public-Tests/P01_sphincs_plus/126_sha2_192s_s_prf_addr_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/126_sha2_192s_s_prf_addr_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/127_sha2_192s_s_gen_message_random_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/127_sha2_192s_s_gen_message_random_lib/CMakeLists.txt
+index 4d5706e..180fce5 100644
+--- a/Public-Tests/P01_sphincs_plus/127_sha2_192s_s_gen_message_random_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/127_sha2_192s_s_gen_message_random_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/128_sha2_192s_s_hash_message_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/128_sha2_192s_s_hash_message_lib/CMakeLists.txt
+index 4d5706e..180fce5 100644
+--- a/Public-Tests/P01_sphincs_plus/128_sha2_192s_s_hash_message_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/128_sha2_192s_s_hash_message_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/129_sha2_192s_r_initialize_hash_function_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/129_sha2_192s_r_initialize_hash_function_lib/CMakeLists.txt
+index 4d5706e..180fce5 100644
+--- a/Public-Tests/P01_sphincs_plus/129_sha2_192s_r_initialize_hash_function_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/129_sha2_192s_r_initialize_hash_function_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/130_sha2_192s_r_prf_addr_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/130_sha2_192s_r_prf_addr_lib/CMakeLists.txt
+index 4d5706e..180fce5 100644
+--- a/Public-Tests/P01_sphincs_plus/130_sha2_192s_r_prf_addr_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/130_sha2_192s_r_prf_addr_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/131_sha2_192s_r_gen_message_random_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/131_sha2_192s_r_gen_message_random_lib/CMakeLists.txt
+index 4d5706e..180fce5 100644
+--- a/Public-Tests/P01_sphincs_plus/131_sha2_192s_r_gen_message_random_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/131_sha2_192s_r_gen_message_random_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/Public-Tests/P01_sphincs_plus/132_sha2_192s_r_hash_message_lib/CMakeLists.txt b/Public-Tests/P01_sphincs_plus/132_sha2_192s_r_hash_message_lib/CMakeLists.txt
+index 4d5706e..180fce5 100644
+--- a/Public-Tests/P01_sphincs_plus/132_sha2_192s_r_hash_message_lib/CMakeLists.txt
++++ b/Public-Tests/P01_sphincs_plus/132_sha2_192s_r_hash_message_lib/CMakeLists.txt
+@@ -5,4 +5,46 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+ 
++macro(add_executable target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_executable(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(add_library target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _add_library(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_link_libraries target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_link_libraries(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_include_directories target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_include_directories(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_definitions target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_definitions(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(target_compile_options target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _target_compile_options(${target_name} ${ARGN})
++  endif()
++endmacro()
++
++macro(set_target_properties target_name)
++  if("${target_name}" STREQUAL "sha2")
++    _set_target_properties(${target_name} ${ARGN})
++  endif()
++endmacro()
++
+ add_subdirectory(test_case)
+diff --git a/deployment/scripts/github-actions/run-tests.pyz b/deployment/scripts/github-actions/run-tests.pyz
+index e2c1f2672e5a245010ed7e03d5bfb8b9fdcd6f5c..13a41e566ecef23d667eaa724636715191c05c19 100755
+GIT binary patch
+delta 821
+zcmbQfm1)BkrU{D7HVj1*(^SAz?_CfzIhWA}L~mZhc$^W;C}Zy91T)xqo0Y(fUVSTW
+z5M%NwD?Kp%+iE#jVySgL7nmXL#>B~7Wm+^@#$N}l!rOlySmKSpA;eULKv4l9po-{E
+z8I@BG3NtW(upGnWRWlVfrziGuN$4mj=_V@aC={0zX_O=urKgs}r(_ms#!fbjwAieh
+z!_KtXH19bZ*iiY>7FIB0S(T*}^9-}1$&aQK$pal2&42_r;cNkhzmDRQ*G-iGtJxKM
+z?fM3w90&`+)i5w@X|$XCbgCj)O@Or4a$cYu2#cVok(;bKO&Q|FX_Cxa8e=D?L;1a6
+zzWU^q(-gq+XTba&lV41e1Dol;Iz@|%n}Gp@MN!POo2)t=94C`~rc1K?b*#3U>^MVo
+za@}+uutB{*!7YtzAcFg+iz|S9YFuE@WX{FF0K&2;riEF9b#u=U11sF~{H5Os4h9Ag
+zmPb)|!WF1c7aVPcGeGv9^_$!`Lmq7B2B5%}#y@_O&(6>S8?#lLchx_jb`X|8F=np+
+z<lp{M`~lvKOd`yXzyhTehnXM~E(T224^*67H<L#JGx8C}Y-xO%089!x5UauiZbz^(
+zFo3WiLJcs2o|R1gHd7uPn#v~nPk5z(F$Bb@igG8L%u;X$ri$p|^KZkwfChjtFwo(k
+mfpO&&28Q_f+{Dbh_;|g7$^dUxHju0^5dLFfV33&#;sF5n3E1NR
+
+delta 1037
+zcmdn6g=zX$rU{CQALrym7j~5hi8C-TfG{r*7nSDemZTP!6zdgKR!vZ3?wFG^QAGtz
+zdEaGLot-mTo6!bDZ_Z*o&Io3hF!ynS6l^}q)2sw$c<WnngVlCe>4E8;R?ERkldbc)
+zz>KS|Okh2eZ~5tfRdD*x152#(H)I5xaW6nrfEQ?L^qsWjYgY?1Fs$B`xQUA?mTR(M
+zvBqSHNdC=CIqXb~aho~wp0j~<d@gBW1)EV-WhuoB^xWiaQ;O`cc@pSPFj&$E@-~W>
+z1H2iTM3_au(m>lMYfqK5dg~YoQ3eheeKaM}yJD|h-vCqq!a`t;5MoJV!{oZDit@m~
+ziVl$0S`G?c5QZ2IQ<E@x-&AF=n(pIYlV&h7Fn}<sn)#EaDaV0~`582)Gl`Rd0fYr1
+zCV<H$jhW0~k3d|QRGOKS0*pX(msYW?6OB}2U;tr$6z#tzH%^n22L-qP>J%+5ZUzPr
+z7DZ9hFnQlJ6|hT@gc*P_0|f#MZyoneW}L1BR>PLLa#9{p2888cN`Ul|#&<w9Vw3M$
+zacd*H59B@L0)r-VE(Qh=mPOGsV{+egNJ7~=U6N%<BbVFc{^_EV-%poN067{-EmF9E
+z9K`QGS$&4Q0?71r<?kP*166{s43dr|jduQ%CH&<uoU>J%chx_jLJ*cf(QtqA`WfnA
+zo2$QBNZba7B?!x-s1XjF{5C*Q2icD($r%`MsNtfWIGHt30Yk&q@POM9tPBhwj2h=c
+zrIY(-%7e4d#+j1LOB!cRK08wZobo@+lvceug@GYHJ~uHlFFqce7+Bdr4io`GOQ2aE
+HQ$aicbQ%Vf
+
+diff --git a/deployment/scripts/github-actions/runtests/runners/lib_runner.py b/deployment/scripts/github-actions/runtests/runners/lib_runner.py
+index fd4bfae..bfff72c 100644
+--- a/deployment/scripts/github-actions/runtests/runners/lib_runner.py
++++ b/deployment/scripts/github-actions/runtests/runners/lib_runner.py
+@@ -57,7 +57,7 @@ class LibRunner(TestCaseRunner):
+ 
+             stdin = spec.get("stdin", None)
+             exec_path = repo_root / "target" / "release" / runner_name
+-            run_cmd   = [exec_path, "lib", "-c", test_name + ".json"]
++            run_cmd   = [exec_path, "lib", "-c", test_name + ".json", "-a", str(target_dir)]
+             if verbose:
+                 print(f"[test] Running {run_cmd}:{test_name}")
+             try:
+@@ -69,7 +69,7 @@ class LibRunner(TestCaseRunner):
+             
+             test_stdout = res.stdout or ""
+             test_stderr = res.stderr or ""
+-            (new_stdout, count) = re.subn(f"^{test_name}.json: true\n", "", test_stdout)
++            (new_stdout, count) = re.subn(f"{test_name}.json: true\n", "", test_stdout)
+             
+             # Build expectations and compare
+             expected_rc = spec.get("rc", 0)
+diff --git a/tools/cando2/src/lib.rs b/tools/cando2/src/lib.rs
+index 2e5f727..49969d4 100644
+--- a/tools/cando2/src/lib.rs
++++ b/tools/cando2/src/lib.rs
+@@ -228,6 +228,10 @@ macro_rules! harness {
+                 /// run one or more specific test cases
+                 #[argh(option, short='c')]
+                 case: Vec<String>,
++
++                /// artifact directory
++                #[argh(option, short='a')]
++                artifact: Option<String>,
+             }
+ 
+             /// Run tests for a binary candidate
+@@ -249,6 +253,10 @@ macro_rules! harness {
+                     let mut tcs = std::collections::HashMap::new();
+                     let mut json_string = String::new();
+ 
++                    if let Some(artifact) = lopts.artifact {
++                        ARTIFACT_DIR.set(PathBuf::from(artifact)).unwrap();
++                    }
++
+                     if lopts.zero {
+                         let mut state = State::zeroed();
+ 
+-- 
+2.25.1
+
