@@ -1,3 +1,5 @@
+To build and run the container:
+
 ```bash
 ./download.sh
 docker build -t tractor-crat:latest .
@@ -7,7 +9,6 @@ docker run -it tractor-crat:latest
 Inside the container:
 
 ```bash
-cd Test-Corpus
 ./translate_all.py
 ```
 
