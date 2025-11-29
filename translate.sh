@@ -63,8 +63,9 @@ if [[ "$target_type" == "EXECUTABLE" ]]; then
     --unsafe-remove-no-mangle \
     --unsafe-remove-extern-c \
     --unsafe-replace-pub \
+    --unexpand-use-print \
     --bin-name "$target_name" \
-    --pass expand,preprocess,extern,pointer,io,libc,static,interface,unsafe,unexpand,split,bin \
+    --pass expand,preprocess,extern,pointer,io,libc,static,simpl,check,interface,unsafe,unexpand,split,bin \
     "$tdst"
 else
   crat \
@@ -75,8 +76,14 @@ else
     --unsafe-remove-no-mangle \
     --unsafe-remove-extern-c \
     --unsafe-replace-pub \
-    --pass expand,preprocess,extern,pointer,io,libc,static,interface,unsafe,unexpand,split \
+    --unexpand-use-print \
+    --pass expand,preprocess,extern,pointer,io,libc,static,simpl,check,interface,unsafe,unexpand,split,bin \
     "$tdst"
 fi
+
+while cargo clippy --fix --allow-no-vcs --manifest-path "$tdst/Cargo.toml" 2>&1 \
+  | grep -q "run \`cargo clippy --fix"; do :; done
+cargo fmt --manifest-path "$tdst/Cargo.toml"
+rm -rf "$dst/target"
 
 ./cdylib.py "$src/build-ninja" "$src" "$tdst"

@@ -59,7 +59,7 @@ RUN git clone https://github.com/kaist-plrg/crat \
 RUN cd crat \
  && git checkout master \
  && git pull \
- && git checkout 717da2e \
+ && git checkout 2dcafd7 \
  && cargo build --release --bin crat
 
 RUN pip3 install libclang
