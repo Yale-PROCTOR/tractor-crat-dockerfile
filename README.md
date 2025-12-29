@@ -21,5 +21,5 @@ To translate an individual test case:
 To run tests:
 
 ```bash
-./deployment/scripts/github-actions/run-tests.pyz --keep-going --rust
+./deployment/scripts/github-actions/run_rust.sh --keep-going -m B01 -m P00 -m P01
 ```

@@ -39,14 +39,15 @@ RUN cd Python-3.14.0 \
 RUN pip3 install toml libclang
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs \
-  | sh -s -- -y -q --default-toolchain nightly-2025-06-23-x86_64-unknown-linux-gnu
+  | sh -s -- -y -q --default-toolchain none
 
 RUN git clone https://github.com/Yale-PROCTOR/c2rust \
  && cd c2rust \
  && git checkout tractor-0.21.0 \
- && cargo build --release -Z sparse-registry \
+ && cargo build --release --bin c2rust-transpile -Z sparse-registry \
  && ln -s ~/c2rust/target/release/c2rust-transpile ~/local/bin
 
+RUN rustup toolchain install -c rust-src,rustc-dev,llvm-tools-preview nightly-2025-06-23
 RUN git clone https://github.com/kaist-plrg/crat \
  && cd crat \
  && git checkout 8d0b27e \
@@ -58,14 +59,8 @@ RUN git clone https://github.com/kaist-plrg/crat \
 
 COPY --chown=ubuntu:ubuntu Test-Corpus Test-Corpus
 WORKDIR /home/ubuntu/Test-Corpus
-
-COPY --chown=ubuntu:ubuntu fixes.patch .
-RUN git checkout 96ce4c7 \
- && git apply fixes.patch \
- && rm fixes.patch \
- && cd deployment/scripts/github-actions \
- && rm run-tests.pyz \
- && python3 -m zipapp . -m "runtests.__main__:main" -p "/usr/bin/env python3" -o run-tests.pyz
+RUN git checkout de47e3e \
+ && sed -i 's/nightly-2025-11-11/nightly-2025-06-23/g' rust-toolchain.toml
 
 COPY --chown=ubuntu:ubuntu \
      add_link_args.py \

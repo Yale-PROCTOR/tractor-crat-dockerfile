@@ -10,6 +10,8 @@ MAX_WORKERS = os.cpu_count() or 1
 errors = []
 
 def run_translate(directory):
+    if "B02_" in directory:
+        return
     if errors:
         return
     command = ["./translate.sh", directory]
