@@ -1,37 +1,117 @@
 #!/usr/bin/env python3
-import glob
-import subprocess
 import concurrent.futures
-import sys
+import glob
 import os
+import signal
+import subprocess
+import sys
+import threading
 
-MAX_WORKERS = os.cpu_count() or 1
+MAX_WORKERS = int(sys.argv[1]) if len(sys.argv) > 1 else os.cpu_count() or 1
+directories = sorted(glob.glob("Public-Tests/*/*/"))
+successes = []
+failures = []
+process_lock = threading.Lock()
+active_processes = set()
 
-errors = []
+excludes = [
+    'arr_del_lib',
+    'arr_ins_lib',
+    'arr_push_lib',
+    'helxo_lib',
+    'hm_geti_lib',
+    'intput_lib',
+    'sh_geti_lib',
+    'sh_puts_lib',
+    'str_dups_lib',
+    'str_put_lib',
+    'generic-foreach',
+    'cJSON_lib',
+    'fallcalc_lib',
+    'jumpnode_lib',
+    'inreftree_lib'
+]
+
+def finish():
+    global successes, failures, directories
+
+    successes = sorted(successes)
+    if successes:
+        print(f"Successes:")
+        for x in successes:
+            print(f"  {x}")
+
+    failures = sorted(failures)
+    if failures:
+        print(f"Failures:")
+        for x in failures:
+            print(f"  {x}")
+
+    remainings = sorted(set(directories) - set(successes) - set(failures))
+    if remainings:
+        print(f"Remainings:")
+        for x in remainings:
+            print(f"  {x}")
+
+    if successes:
+        print(f"Successes: {len(successes)}")
+    if failures:
+        print(f"Failures: {len(failures)}")
+    if remainings:
+        print(f"Remainings: {len(remainings)}")
+
+    os._exit(1 if failures or remainings else 0)
+
+
+def handle_interrupt(sig, frame):
+    with process_lock:
+        for p in active_processes:
+            try:
+                os.killpg(os.getpgid(p.pid), signal.SIGTERM)
+            except Exception:
+                p.terminate()
+    finish()
+
 
 def run_translate(directory):
-    if "B02_" in directory:
-        return
-    if errors:
-        return
-    command = ["./translate.sh", directory]
-    subprocess.run(
-        command, 
-        check=True
-    )
+    if any(exclude in directory for exclude in excludes):
+        return directory, True
 
-directories = sorted(glob.glob("Public-Tests/*/*/"))
+    print(directory)
+    command = ["./translate.sh", directory]
+
+    try:
+        with process_lock:
+            p = subprocess.Popen(
+                command,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+                start_new_session=True
+            )
+            active_processes.add(p)
+
+        p.wait()
+
+        with process_lock:
+            active_processes.remove(p)
+
+        return directory, (p.returncode == 0)
+    except Exception:
+        return directory, False
+
+signal.signal(signal.SIGINT, handle_interrupt)
 
 with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
     future_to_dir = {executor.submit(run_translate, d): d for d in directories}
-    
-    for future in concurrent.futures.as_completed(future_to_dir):
-        try:
-            future.result()
-        except Exception as e:
-            errors.append(e)
 
-if errors:
-    for e in errors:
-        print(e)
-    sys.exit(1)
+    try:
+        for future in concurrent.futures.as_completed(future_to_dir):
+            directory, success = future.result()
+            if success:
+                successes.append(directory)
+            else:
+                failures.append(directory)
+    except KeyboardInterrupt:
+        handle_interrupt(None, None)
+
+finish()

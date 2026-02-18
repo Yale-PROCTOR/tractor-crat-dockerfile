@@ -35,10 +35,22 @@ if __name__ == "__main__":
 
     names = set()
 
+    all_include_flags = set()
     for command in commands:
         args = [opt for opt in command["command"].split() if preserve_option(opt)]
+        for arg in args:
+            if arg.startswith("-I"):
+                all_include_flags.add(arg)
         index = Index.create()
         tu = index.parse(command["file"], args=args)
+        visit(tu.cursor, names, source_root)
+
+    # Second pass: directly parse header files under source_root
+    # to catch declarations not #included by any .c file
+    header_args = list(all_include_flags)
+    for header in source_root.rglob("*.h"):
+        index = Index.create()
+        tu = index.parse(str(header), args=header_args)
         visit(tu.cursor, names, source_root)
 
     config_toml = toml.loads("")

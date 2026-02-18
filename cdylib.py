@@ -44,9 +44,13 @@ if __name__ == "__main__":
                         continue
                     sources_.append(build_root / fragment["fragment"])
 
+            if target_data["type"] == "UTILITY":
+                continue
             if target_data["type"] == "OBJECT_LIBRARY":
                 assert len(target_data["artifacts"]) == len(target_data["sources"])
-                for artifact, source in zip(target_data["artifacts"], target_data["sources"]):
+                for artifact, source in zip(
+                    target_data["artifacts"], target_data["sources"]
+                ):
                     sources = sources_.copy()
                     sources.append(source_root / source["path"])
                     artifact_path = build_root / artifact["path"]
@@ -101,7 +105,7 @@ if __name__ == "__main__":
     common_prefix = Path(os.path.commonprefix(all_sources))
 
     workspaces: "list[str]" = []
-    for (artifact, (sources, libs)) in artifacts.items():
+    for artifact, (sources, libs) in artifacts.items():
         if artifact.suffix != ".so":
             continue
         name = artifact.stem[3:]
@@ -109,10 +113,9 @@ if __name__ == "__main__":
         crate_dir = rust_root / "crates" / name
         crate_dir.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(rust_root / "Cargo.toml", crate_dir / "Cargo.toml")
+        shutil.copyfile(rust_root / "build.rs", crate_dir / "build.rs")
         shutil.copytree(rust_root / "src", crate_dir / "src")
         shutil.copyfile(rust_root / "lib.rs", crate_dir / "lib.rs")
-        if (rust_root / "stdio.rs").exists():
-            shutil.copyfile(rust_root / "stdio.rs", crate_dir / "stdio.rs")
         if (rust_root / "c_lib.rs").exists():
             shutil.copyfile(rust_root / "c_lib.rs", crate_dir / "c_lib.rs")
 

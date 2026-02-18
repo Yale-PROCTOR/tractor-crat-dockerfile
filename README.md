@@ -6,11 +6,14 @@ docker build -t tractor-crat:latest .
 docker run -it tractor-crat:latest
 ```
 
-Inside the container:
+Inside the container, to translate all test cases and execute test vectors:
 
 ```bash
 ./translate_all.py
+./deployment/scripts/github-actions/run_rust.sh --keep-going
 ```
+
+---
 
 To translate an individual test case:
 
@@ -18,8 +21,8 @@ To translate an individual test case:
 ./translate.sh Public-Tests/B01_organic/bin2hex_lib
 ```
 
-To run tests:
+To test an individual test case:
 
 ```bash
-./deployment/scripts/github-actions/run_rust.sh --keep-going -m B01 -m P00 -m P01
+./deployment/scripts/github-actions/run_rust.sh -m Public-Tests/B01_organic/bin2hex_lib
 ```

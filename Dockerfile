@@ -48,9 +48,9 @@ RUN git clone https://github.com/Yale-PROCTOR/c2rust \
  && ln -s ~/c2rust/target/release/c2rust-transpile ~/local/bin
 
 RUN rustup toolchain install -c rust-src,rustc-dev,llvm-tools-preview nightly-2025-06-23
-RUN git clone https://github.com/kaist-plrg/crat \
+RUN git clone https://github.com/Yale-PROCTOR/crat \
  && cd crat \
- && git checkout 8d0b27e \
+ && git checkout 4299bad \
  && cd deps_crate \
  && cargo build \
  && cd .. \
@@ -59,7 +59,7 @@ RUN git clone https://github.com/kaist-plrg/crat \
 
 COPY --chown=ubuntu:ubuntu Test-Corpus Test-Corpus
 WORKDIR /home/ubuntu/Test-Corpus
-RUN git checkout de47e3e \
+RUN git checkout 6fefd73 \
  && sed -i 's/nightly-2025-11-11/nightly-2025-06-23/g' rust-toolchain.toml
 
 COPY --chown=ubuntu:ubuntu \

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -euo pipefail
+set -euxo pipefail
 
 if [ $# -ne 1 ]; then
     exit 1
@@ -58,6 +58,7 @@ if [[ "$target_type" == "EXECUTABLE" ]]; then
     --extern-build-dir "$src/build-ninja" \
     --extern-source-dir "$src" \
     --extern-ignore-return-type \
+    --extern-ignore-param-type \
     --io-assume-to-str-ok \
     --unsafe-remove-unused \
     --unsafe-remove-no-mangle \
@@ -65,24 +66,30 @@ if [[ "$target_type" == "EXECUTABLE" ]]; then
     --unsafe-replace-pub \
     --unexpand-use-print \
     --bin-name "$target_name" \
-    --pass expand,preprocess,extern,pointer,io,libc,static,simpl,check,interface,unsafe,unexpand,split,bin \
+    --pass expand,extern,preprocess,pointer,io,libc,static,simpl,check,interface,unsafe,unexpand,split,bin \
     "$tdst"
 else
   crat \
     --config "$src/config.toml" \
     --inplace \
+    --extern-ignore-return-type \
+    --extern-ignore-param-type \
     --io-assume-to-str-ok \
     --unsafe-remove-unused \
     --unsafe-remove-no-mangle \
     --unsafe-remove-extern-c \
     --unsafe-replace-pub \
     --unexpand-use-print \
-    --pass expand,preprocess,extern,pointer,io,libc,static,simpl,check,interface,unsafe,unexpand,split,bin \
+    --pass expand,extern,preprocess,pointer,io,libc,static,simpl,check,interface,unsafe,unexpand,split,bin \
     "$tdst"
 fi
 
-while cargo clippy --fix --allow-no-vcs --manifest-path "$tdst/Cargo.toml" 2>&1 \
-  | grep -q "run \`cargo clippy --fix"; do :; done
+count=0
+while [ "$count" -lt "10" ] && \
+  cargo clippy --fix --allow-no-vcs --manifest-path "$tdst/Cargo.toml" 2>&1 \
+  | grep -q "run \`cargo clippy --fix"; do
+    count=$((count + 1))
+done
 cargo fmt --manifest-path "$tdst/Cargo.toml"
 rm -rf "$dst/target"
 
