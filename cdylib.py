@@ -118,6 +118,8 @@ if __name__ == "__main__":
         shutil.copyfile(rust_root / "lib.rs", crate_dir / "lib.rs")
         if (rust_root / "c_lib.rs").exists():
             shutil.copyfile(rust_root / "c_lib.rs", crate_dir / "c_lib.rs")
+        if (rust_root / "slice_cursor.rs").exists():
+            shutil.copyfile(rust_root / "slice_cursor.rs", crate_dir / "slice_cursor.rs")
 
         cargo_toml_path = crate_dir / "Cargo.toml"
         with open(cargo_toml_path, "r") as f:
