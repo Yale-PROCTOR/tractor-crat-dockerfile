@@ -25,7 +25,7 @@ excludes = [
     'sh_puts_lib',
     'str_dups_lib',
     'str_put_lib',
-    'generic-foreach',
+    'generic_foreach',
     'cJSON_lib',
     'fallcalc_lib',
     'jumpnode_lib',

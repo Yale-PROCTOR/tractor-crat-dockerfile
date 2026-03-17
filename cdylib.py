@@ -8,6 +8,18 @@ import toml
 
 from pathlib import Path
 
+
+def copy_rust_sources(rust_root: Path, crate_dir: Path) -> None:
+    generated_root = rust_root / "crates"
+    for source_path in rust_root.rglob("*.rs"):
+        if generated_root in source_path.parents:
+            continue
+        relative_path = source_path.relative_to(rust_root)
+        destination_path = crate_dir / relative_path
+        destination_path.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(source_path, destination_path)
+
+
 if __name__ == "__main__":
     build_root = Path(sys.argv[1])
     source_root = Path(sys.argv[2])
@@ -113,11 +125,7 @@ if __name__ == "__main__":
         crate_dir = rust_root / "crates" / name
         crate_dir.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(rust_root / "Cargo.toml", crate_dir / "Cargo.toml")
-        shutil.copyfile(rust_root / "build.rs", crate_dir / "build.rs")
-        shutil.copytree(rust_root / "src", crate_dir / "src")
-        shutil.copyfile(rust_root / "lib.rs", crate_dir / "lib.rs")
-        if (rust_root / "c_lib.rs").exists():
-            shutil.copyfile(rust_root / "c_lib.rs", crate_dir / "c_lib.rs")
+        copy_rust_sources(rust_root, crate_dir)
 
         cargo_toml_path = crate_dir / "Cargo.toml"
         with open(cargo_toml_path, "r") as f:

@@ -50,7 +50,7 @@ RUN git clone https://github.com/Yale-PROCTOR/c2rust \
 RUN rustup toolchain install -c rust-src,rustc-dev,llvm-tools-preview nightly-2025-06-23
 RUN git clone https://github.com/Yale-PROCTOR/crat \
  && cd crat \
- && git checkout 4299bad \
+ && git checkout d15a3ce \
  && cd deps_crate \
  && cargo build \
  && cd .. \
@@ -59,8 +59,10 @@ RUN git clone https://github.com/Yale-PROCTOR/crat \
 
 COPY --chown=ubuntu:ubuntu Test-Corpus Test-Corpus
 WORKDIR /home/ubuntu/Test-Corpus
-RUN git checkout 6fefd73 \
- && sed -i 's/nightly-2025-11-11/nightly-2025-06-23/g' rust-toolchain.toml
+COPY --chown=ubuntu:ubuntu 0001-fixed.patch 0001-fixed.patch
+RUN git checkout 0319ab0 \
+ && git apply 0001-fixed.patch \
+ && rm 0001-fixed.patch
 
 COPY --chown=ubuntu:ubuntu \
      add_link_args.py \
