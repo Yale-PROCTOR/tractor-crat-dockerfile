@@ -86,6 +86,7 @@ else
     "$tdst"
 fi
 
+cargo build --manifest-path "$tdst/Cargo.toml"
 count=0
 while [ "$count" -lt "10" ] && \
   cargo clippy --fix --allow-no-vcs --manifest-path "$tdst/Cargo.toml" 2>&1 \
