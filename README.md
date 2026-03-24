@@ -1,3 +1,5 @@
+**Archived. Go to <https://github.com/Yale-PROCTOR/proctor>.**
+
 To build and run the container:
 
 ```bash
